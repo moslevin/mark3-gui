@@ -19,7 +19,6 @@ See license.txt for more information
 #include "message.h"
 #include "kerneltypes.h"
 #include "gui.h"
-#include "system_heap.h"
 #include "fixed_heap.h"
 #include "memutil.h"
 #include "kernelaware.h"
@@ -451,7 +450,7 @@ bool GuiEventSurface::SendEvent(GuiEvent_t* pstEvent_)
     }
 
     // Allocate a copy of the event from the heap
-    GuiEvent_t* pstEventCopy = static_cast<GuiEvent_t*>(SystemHeap::Alloc(sizeof(GuiEvent_t)));
+    GuiEvent_t* pstEventCopy; //!! = static_cast<GuiEvent_t*>(SystemHeap::Alloc(sizeof(GuiEvent_t)));
 
     // If the allocation fails, push the message back to the global pool and bail
     if (pstEventCopy == 0) {
@@ -491,7 +490,7 @@ bool GuiEventSurface::ProcessEvent()
 
     // Free the message and event as soon as possible, since
     // they are shared system resources
-    SystemHeap::Free(pclMessage->GetData());
+    //!! SystemHeap::Free(pclMessage->GetData());
     m_pclMessagePool->Push(pclMessage);
 
     // Special case check - target ID is the highest Z-ordered window(s) ONLY.
