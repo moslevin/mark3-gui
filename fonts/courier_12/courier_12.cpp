@@ -1,5 +1,5 @@
-/*    Funkenstein Software Consulting Font Renderer
-    (c) 2012 - 2017, Funkenstein Software Consulting, all rights reserved.
+/*    m0slevin Font Renderer
+    (c) 2012 - 2018, m0slevin, all rights reserved.
 */
 
 #include "font.h"
