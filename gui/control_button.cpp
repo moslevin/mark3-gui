@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_button.cpp
-    \brief GUI Button Control Implementation
+/**
+    @file control_button.cpp
+    @brief GUI Button Control Implementation
 
     Basic pushbutton control with an up/down state.
 */
@@ -21,7 +21,8 @@ See license.txt for more information
 #include "control_button.h"
 #include "gui.h"
 #include "gui_palette.h"
-namespace Mark3 {
+namespace Mark3
+{
 void ButtonControl::Init()
 {
     m_szCaption      = "Button";
@@ -212,4 +213,4 @@ void ButtonControl::Activate(bool bActivate_)
     }
     SetStale();
 }
-} //namespace Mark3
+} // namespace Mark3

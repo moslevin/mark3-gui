@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 =========================================================================== */
-/*!
-    \file gui.h
-    \brief Graphical user Interface classes and data structure declarations.
+/**
+    @file gui.h
+    @brief Graphical user Interface classes and data structure declarations.
  */
 #pragma once
 
@@ -40,7 +40,7 @@ See license.txt for more information
 #endif
 
 //---------------------------------------------------------------------------
-/*!
+/**
     Event state defintions, used for determining whether or not a button or
     key is in the "up" or "down" contact state.
  */
@@ -57,9 +57,8 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 //---------------------------------------------------------------------------
-/*!
+/**
     Enumeration defining the various UI event codes.
  */
 typedef enum {
@@ -73,7 +72,7 @@ typedef enum {
 } GuiEventType_t;
 
 //---------------------------------------------------------------------------
-/*!
+/**
     Keyboard UI event structure definition.
  */
 typedef struct {
@@ -92,7 +91,7 @@ typedef struct {
 } KeyEvent_t;
 
 //---------------------------------------------------------------------------
-/*!
+/**
     Mouse UI event structure
  */
 typedef struct {
@@ -112,7 +111,7 @@ typedef struct {
 } MouseEvent_t;
 
 //---------------------------------------------------------------------------
-/*!
+/**
     Touch UI event structure
  */
 typedef struct {
@@ -128,7 +127,7 @@ typedef struct {
 } TouchEvent_t;
 
 //---------------------------------------------------------------------------
-/*!
+/**
     Joystick UI event structure
  */
 typedef struct {
@@ -181,7 +180,7 @@ typedef struct {
 } JoystickEvent_t;
 
 //---------------------------------------------------------------------------
-/*!
+/**
     Timer UI event structure
  */
 typedef struct {
@@ -189,7 +188,7 @@ typedef struct {
 } TimerEvent_t;
 
 //---------------------------------------------------------------------------
-/*!
+/**
     Composite UI event structure.  Depending on the event type, can contain
     either a keyboard, mouse, touch, joystick, timer event, etc.
  */
@@ -219,8 +218,8 @@ typedef enum {
 class GuiControl;
 
 //---------------------------------------------------------------------------
-/*!
-    \brief Basic Window Class
+/**
+    @brief Basic Window Class
 
     A Window is loosely defined as a container of controls, all sharing a
     coordinate reference coordinate frame.  Events are managed on a per-window
@@ -229,7 +228,7 @@ class GuiControl;
 class GuiWindow : public LinkListNode
 {
 public:
-    /*!
+    /**
      *  Initialize the GUI Window object prior to use.  Must be called before
      *  calling other methods on this object
      */
@@ -241,55 +240,55 @@ public:
         ClearNode();
     }
 
-    /*!
-     *  \brief SetDriver
+    /**
+     *  @brief SetDriver
      *
      *  Set the graphics driver to use for rendering controls on the window.
      *
-     *  \param pclDriver_ Pointer to the graphics driver
+     *  @param pclDriver_ Pointer to the graphics driver
      */
     void SetDriver(GraphicsDriver* pclDriver_) { m_pclDriver = pclDriver_; }
-    /*!
-     *  \brief GetDriver
+    /**
+     *  @brief GetDriver
      *
      *  Set the graphics driver to use for rendering controls on the window.
      *
-     *  \return Pointer to the Window's graphics driver
+     *  @return Pointer to the Window's graphics driver
      */
     GraphicsDriver* GetDriver() { return m_pclDriver; }
-    /*!
-     *  \brief AddControl
+    /**
+     *  @brief AddControl
      *
      *  Assign a GUI Control to this window object.  Adding an object to a
      *  window ensures that the object will be drawn on the specific window
      *  surface, and ensures that events directed to this window will be
      *  forwarded to the controls appropriately.
      *
-     *  \param pclControl_ Pointer to the control object to add
-     *  \param pclParent_  Pointer to the control's "parent" object (or NULL)
+     *  @param pclControl_ Pointer to the control object to add
+     *  @param pclParent_  Pointer to the control's "parent" object (or NULL)
      */
     void AddControl(GuiControl* pclControl_, GuiControl* pclParent_);
 
-    /*!
-     *  \brief RemoveControl
+    /**
+     *  @brief RemoveControl
      *
      *  Removes a previously-added control from the Window.
      *
-     *  \param pclControl_ Pointer to the control object to remove
+     *  @param pclControl_ Pointer to the control object to remove
      */
     void RemoveControl(GuiControl* pclControl_);
 
-    /*!
-     *  \brief GetMaxZOrder
+    /**
+     *  @brief GetMaxZOrder
      *
      *  Returns the highest Z-Order of all controls attached to this window.
      *
-     *  \return The highest Z-Order used by controls in this window
+     *  @return The highest Z-Order used by controls in this window
      */
     uint8_t GetMaxZOrder();
 
-    /*!
-     *  \brief Redraw
+    /**
+     *  @brief Redraw
      *
      *  Redraw objects in the window.  Typically, only the affected controls
      *  will need to be redrawn, but in some cases (such as window
@@ -298,8 +297,8 @@ public:
      */
     void Redraw(bool bRedrawAll_);
 
-    /*!
-     *  \brief ProcessEvent
+    /**
+     *  @brief ProcessEvent
      *
      *  Process an event sent to this window.  This method handles all
      *  of the plumbing required to target the event towards specific
@@ -308,24 +307,24 @@ public:
      */
     void ProcessEvent(GuiEvent_t* pstEvent_);
 
-    /*!
-     *  \brief SetFocus
+    /**
+     *  @brief SetFocus
      *
      *  Set the control used to accept "focus" events.  Such events include
      *  keyboard events.
      *
-     *  \param pclControl_ Pointer to the control object to set focus on.
+     *  @param pclControl_ Pointer to the control object to set focus on.
      */
     void SetFocus(GuiControl* pclControl_);
 
-    /*!
-     *  \brief IsInFocus
+    /**
+     *  @brief IsInFocus
      *
      *  Return whether or not the selected control is in focus or not.
      *
-     *  \param pclControl_ Pointer to the control object to evaluate
+     *  @param pclControl_ Pointer to the control object to evaluate
      *
-     *  \return true - the selected control is the active control on the window
+     *  @return true - the selected control is the active control on the window
      *          false - otherwise
      */
     bool IsInFocus(GuiControl* pclControl_)
@@ -336,106 +335,106 @@ public:
         return false;
     }
 
-    /*!
-     *  \brief SetTop
+    /**
+     *  @brief SetTop
      *
      *  Set the location of the topmost pixel of the window
      *
-     *  \param u16Top_ Topmost pixel of the window
+     *  @param u16Top_ Topmost pixel of the window
      */
     void SetTop(uint16_t u16Top_) { m_u16Top = u16Top_; }
-    /*!
-     *  \brief SetLeft
+    /**
+     *  @brief SetLeft
      *
      *  Set the location of the leftmost pixel of the window
      *
-     *  \param u16Left_ Leftmost pixel of the window
+     *  @param u16Left_ Leftmost pixel of the window
      */
     void SetLeft(uint16_t u16Left_) { m_u16Left = u16Left_; }
-    /*!
-     *  \brief SetHeight
+    /**
+     *  @brief SetHeight
      *
      *  Set the height of the window (in pixels)
      *
-     *  \param u16Height_ Height of the window in pixels
+     *  @param u16Height_ Height of the window in pixels
      */
     void SetHeight(uint16_t u16Height_) { m_u16Height = u16Height_; }
-    /*!
-     *  \brief SetWidth
+    /**
+     *  @brief SetWidth
      *
      *  Set the width of the window (in pixels)
      *
-     *  \param u16Width_ Width of the window in pixels
+     *  @param u16Width_ Width of the window in pixels
      */
     void SetWidth(uint16_t u16Width_) { m_u16Width = u16Width_; }
-    /*!
-     *  \brief GetTop
+    /**
+     *  @brief GetTop
      *
      *  Return the topmost pixel of the window
      *
-     *  \return Topmost pixel of the window
+     *  @return Topmost pixel of the window
      */
     uint16_t GetTop() { return m_u16Top; }
-    /*!
-     *  \brief GetLeft
+    /**
+     *  @brief GetLeft
      *
      *  Return the leftmost pixel of the window
      *
-     *  \return Leftmost pixel of the window
+     *  @return Leftmost pixel of the window
      */
     uint16_t GetLeft() { return m_u16Left; }
-    /*!
-     *  \brief GetHeight
+    /**
+     *  @brief GetHeight
      *
      *  Get the height of the window in pixels
      *
-     *  \return Height of the window in pixels
+     *  @return Height of the window in pixels
      */
     uint16_t GetHeight() { return m_u16Height; }
-    /*!
-     *  \brief GetWidth
+    /**
+     *  @brief GetWidth
      *
      *  Get the width of the window in pixels
      *
-     *  \return Width of the window in pixels
+     *  @return Width of the window in pixels
      */
     uint16_t GetWidth() { return m_u16Width; }
-    /*!
-     *  \brief GetZOrder
+    /**
+     *  @brief GetZOrder
      *
      *  Get the Z-order of the window on the event surface
      */
     uint8_t GetZOrder() { return m_u8Z; }
-    /*!
-     *  \brief SetZOrder
+    /**
+     *  @brief SetZOrder
      *
      *  Set the Z-order of the window on the event surface
      */
     void SetZOrder(uint8_t u8Z_) { m_u8Z = u8Z_; }
-    /*!
-     *  \brief CycleFocus
+    /**
+     *  @brief CycleFocus
      *
      *  Cycle the focus to the next active control in the window
      *
-     *  \param bForward_ - Cycle to the next control when true,
+     *  @param bForward_ - Cycle to the next control when true,
      *                     previous control when false
      */
     void CycleFocus(bool bForward_);
 
-    /*!
-     *  \brief SetName
+    /**
+     *  @brief SetName
      *
      *  Set the name for this window
      */
     void SetName(const char* szName_) { m_szName = szName_; }
-    /*!
-     *  \brief GetName
+    /**
+     *  @brief GetName
 
      *  Return the name of this window
      */
     const char* GetName() { return m_szName; }
-    /*!
-     *  \brief InvalidateRegion
+    /**
+     *  @brief InvalidateRegion
      *
      *  Invalidate a region of the window, specified by the bounding box.  The
      *  coordinates specified in the parameters (top and left) refer to absolute
@@ -459,8 +458,8 @@ private:
 };
 
 //---------------------------------------------------------------------------
-/*!
-    \brief GUI Event Surface Object
+/**
+    @brief GUI Event Surface Object
 
     An event surface is the lowest-level UI object.  It maintains a list of
     windows which are associated with it, and manages the transmission and
@@ -474,8 +473,8 @@ private:
 class GuiEventSurface
 {
 public:
-    /*!
-     *  \brief Init
+    /**
+     *  @brief Init
      *
      *  Initialize an event surface before use.  Must be called prior to
      *  any other object methods.
@@ -486,74 +485,74 @@ public:
         m_clWindowList.Init();
     }
 
-    /*!
-     * \brief SetMessagePool
+    /**
+     * @brief SetMessagePool
      *
      * Set the message pool used for sending/receiving message on the surface
      *
-     * \param pclMessagePool_ Pointer to the message pool.
+     * @param pclMessagePool_ Pointer to the message pool.
      */
     void SetMessagePool(MessagePool* pclMessagePool_) { m_pclMessagePool = pclMessagePool_; }
-    /*!
-     * \brief SetHeap
+    /**
+     * @brief SetHeap
      *
      * Set the heap used by the event surface for allocating temporary data structures
      * used by the framework.
      *
-     * \param pclHeap_  Pointer to the heap to set.
+     * @param pclHeap_  Pointer to the heap to set.
      */
     void SetHeap(FixedHeap* pclHeap_) { m_pclHeap = pclHeap_; }
-    /*!
-     *  \brief AddWindow
+    /**
+     *  @brief AddWindow
      *
      *  Add a window to the event surface.
      *
-     *  \param pclWindow_ Pointer to the window object to add to the sruface
+     *  @param pclWindow_ Pointer to the window object to add to the sruface
      */
     void AddWindow(GuiWindow* pclWindow_);
 
-    /*!
-     *  \brief RemoveWindow
+    /**
+     *  @brief RemoveWindow
      *
      *  Remove a window from the event surface.
      *
-     *  \param pclWindow_ Pointer to the window object to remove from the surface
+     *  @param pclWindow_ Pointer to the window object to remove from the surface
      */
     void RemoveWindow(GuiWindow* pclWindow_);
 
-    /*!
-     *  \brief SendEvent
+    /**
+     *  @brief SendEvent
      *
      *  Send an event to this window surface.  The event will be forwraded to
      *  all windows managed by this service.
      *
-     *  \param pstEvent_ Pointer to an event to send
-     *  \return true on success, false on failure
+     *  @param pstEvent_ Pointer to an event to send
+     *  @return true on success, false on failure
      */
     bool SendEvent(GuiEvent_t* pstEvent_);
 
-    /*!
-     *  \brief ProcessEvent
+    /**
+     *  @brief ProcessEvent
      *  Process an event in the event queue.  If no events are pending, the
      *  call will block until an event is available.
      */
     bool ProcessEvent();
 
-    /*!
-     *  \brief GetEventCount
+    /**
+     *  @brief GetEventCount
      *
      *  Get the count of pending events in the event surface's queue.
      */
     uint8_t GetEventCount() { return m_clMessageQueue.GetCount(); }
-    /*!
-     *  \brief FindWindowByName
+    /**
+     *  @brief FindWindowByName
      *
      *  Return a pointer to a window by name, or NULL on failure
      */
     GuiWindow* FindWindowByName(const char* szName_);
 
-    /*!
-     *  \brief InvalidateRegion
+    /**
+     *  @brief InvalidateRegion
      *
      *  Invalidate a region of the window, specified by the bounding box.  The
      *  coordinates specified in the parameters (top and left) refer to absolute
@@ -562,41 +561,41 @@ public:
     void InvalidateRegion(uint16_t u16Left_, uint16_t u16Top_, uint16_t u16Width_, uint16_t u16Height_);
 
 private:
-    /*!
-     *  \brief CopyEvent
+    /**
+     *  @brief CopyEvent
      *
      *  Copy the contents of one message structure to another.
      *
-     *  \param pstDst_ Destination event pointer
-     *  \param pstSrc_ Source event pointer
+     *  @param pstDst_ Destination event pointer
+     *  @param pstSrc_ Source event pointer
      */
     void CopyEvent(GuiEvent_t* pstDst_, GuiEvent_t* pstSrc_);
 
 private:
-    /*!
+    /**
      *  List of windows managed on this event surface
      */
     DoubleLinkList m_clWindowList;
 
-    /*!
+    /**
      *  Message queue used to manage window events
      */
     MessageQueue m_clMessageQueue;
 
-    /*!
+    /**
      *  Message pool used for sending/receiving event messages
      */
     MessagePool* m_pclMessagePool;
 
-    /*!
+    /**
      *  Heap used to manage object data allocations
      */
     FixedHeap* m_pclHeap;
 };
 
 //---------------------------------------------------------------------------
-/*!
-    \brief GUI Control Base Class
+/**
+    @brief GUI Control Base Class
 
     This class is the common ancestor to all GUI control elements.  It
     defines a base set of properties common to all controls, as well as
@@ -607,139 +606,139 @@ private:
 class GuiControl : public LinkListNode
 {
 public:
-    /*!
-     *  \brief Init
+    /**
+     *  @brief Init
      *
      *  Initiailize the control - must be called before use.
      *  Implementation is subclass specific.
      */
     virtual void Init() = 0;
 
-    /*!
-     *  \brief Draw
+    /**
+     *  @brief Draw
      *
      *  Redraw the control "cleanly".  Subclass specific.
      */
     virtual void Draw() = 0;
 
-    /*!
-     *  \brief ProcessEvent
+    /**
+     *  @brief ProcessEvent
      *
      *  Process an event sent to the control.  Subclass specific
      *  implementation.
      *
-     *  \param pstEvent_ Pointer to a struct containing the event data
+     *  @param pstEvent_ Pointer to a struct containing the event data
      */
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_) = 0;
 
-    /*!
-     *  \brief SetTop
+    /**
+     *  @brief SetTop
      *
      *  Set the location of the topmost pixel of the control
      *
-     *  \param u16Top_ Topmost pixel of the control
+     *  @param u16Top_ Topmost pixel of the control
      */
     void SetTop(uint16_t u16Top_) { m_u16Top = u16Top_; }
-    /*!
-     *  \brief SetLeft
+    /**
+     *  @brief SetLeft
      *
      *  Set the location of the leftmost pixel of the control
      *
-     *  \param u16Left_ Leftmost pixel of the control
+     *  @param u16Left_ Leftmost pixel of the control
      */
     void SetLeft(uint16_t u16Left_) { m_u16Left = u16Left_; }
-    /*!
-     *  \brief SetHeight
+    /**
+     *  @brief SetHeight
      *
      *  Set the height of the control (in pixels)
      *
-     *  \param u16Height_ Height of the control in pixels
+     *  @param u16Height_ Height of the control in pixels
      */
     void SetHeight(uint16_t u16Height_) { m_u16Height = u16Height_; }
-    /*!
-     *  \brief SetWidth
+    /**
+     *  @brief SetWidth
      *
      *  Set the width of the control (in pixels)
      *
-     *  \param u16Width_ Width of the control in pixels
+     *  @param u16Width_ Width of the control in pixels
      */
     void SetWidth(uint16_t u16Width_) { m_u16Width = u16Width_; }
-    /*!
-     *  \brief SetZOrder
+    /**
+     *  @brief SetZOrder
      *
      *  Set the Z-order (depth) of the control
      *
-     *  \param u8Z_ Z order of the control
+     *  @param u8Z_ Z order of the control
      */
     void SetZOrder(uint8_t u8Z_) { m_u8ZOrder = u8Z_; }
-    /*!
-     *  \brief SetControlIndex
+    /**
+     *  @brief SetControlIndex
      *
      *  Set the index of the control, used for cycling through focus (ala
      *  tab order in VB).
      *
-     *  \param u8Idx_ Focus index of the control
+     *  @param u8Idx_ Focus index of the control
      */
     void SetControlIndex(uint8_t u8Idx_) { m_u8ControlIndex = u8Idx_; }
-    /*!
-     *  \brief GetTop
+    /**
+     *  @brief GetTop
      *
      *  Return the topmost pixel of the control
      *
-     *  \return Topmost pixel of the control
+     *  @return Topmost pixel of the control
      */
     uint16_t GetTop() { return m_u16Top; }
-    /*!
-     *  \brief GetLeft
+    /**
+     *  @brief GetLeft
      *
      *  Return the leftmost pixel of the control
      *
-     *  \return Leftmost pixel of the control
+     *  @return Leftmost pixel of the control
      */
     uint16_t GetLeft() { return m_u16Left; }
-    /*!
-     *  \brief GetHeight
+    /**
+     *  @brief GetHeight
      *
      *
      *  Get the height of the control in pixels
      *
-     *  \return Height of the control in pixels
+     *  @return Height of the control in pixels
      */
     uint16_t GetHeight() { return m_u16Height; }
-    /*!
-     *  \brief GetWidth
+    /**
+     *  @brief GetWidth
      *
      *  Get the width of the control in pixels
      *
-     *  \return Width of the control in pixels
+     *  @return Width of the control in pixels
      */
     uint16_t GetWidth() { return m_u16Width; }
-    /*!
-     *  \brief GetZOrder
+    /**
+     *  @brief GetZOrder
      *
      *  Return the Z-order of the control
      *
-     *  \return Z-order of the control
+     *  @return Z-order of the control
      */
     uint8_t GetZOrder() { return m_u8ZOrder; }
-    /*!
-     *  \brief GetControlIndex
+    /**
+     *  @brief GetControlIndex
      *
      *  Return the Control Index of the control
      *
-     *  \return The control index of the control
+     *  @return The control index of the control
      */
     uint8_t GetControlIndex() { return m_u8ControlIndex; }
-    /*!
-     *  \brief IsStale
+    /**
+     *  @brief IsStale
      *
      *  Return whether or not the control needs to be redrawn or not
      *
-     *  \return true - control needs redrawing, false - control is intact.
+     *  @return true - control needs redrawing, false - control is intact.
      */
     bool IsStale() { return m_bStale; }
-    /*!
-     *  \brief GetControlOffset
+    /**
+     *  @brief GetControlOffset
      *
      *  Return the absolute offset of the control within an event surface.
      *  This function will traverse through all of the object's parents,
@@ -747,26 +746,26 @@ public:
      *  identified.  The absolute pixel locations of the Topmost (Y)
      *  and Leftmost (X) pixels are popu32ated in the
      *
-     *  \param pus16X_ Pointer to the uint16_t containing the leftmost pixel
-     *  \param pus16Y_ Pointer to the uint16_t containing the topmost pixel
+     *  @param pus16X_ Pointer to the uint16_t containing the leftmost pixel
+     *  @param pus16Y_ Pointer to the uint16_t containing the topmost pixel
      */
     void GetControlOffset(uint16_t* pu16X_, uint16_t* pu16Y_);
 
-    /*!
-     *  \brief IsInFocus
+    /**
+     *  @brief IsInFocus
      *
      *  Return whether or not the current control has the focus in the window
      *
-     *  \return true if this control is in focus, false otherwise
+     *  @return true if this control is in focus, false otherwise
      */
     bool IsInFocus() { return m_pclParentWindow->IsInFocus(this); }
-    /*!
-     *  \brief Activate
+    /**
+     *  @brief Activate
      *
      *  Activate or deactivate the current control - used when switching
      *  from one active control to another.
      *
-     *  \param bActivate_ - true to activate, false to deactivate
+     *  @param bActivate_ - true to activate, false to deactivate
      */
     virtual void Activate(bool bActivate_) = 0;
 
@@ -774,8 +773,8 @@ protected:
     friend class GuiWindow;
     friend class GuiEventSurface;
 
-    /*!
-     *  \brief SetParentControl
+    /**
+     *  @brief SetParentControl
      *
      *  Set the parent control of this control.  When a control has its parent
      *  set, it is considered "nested" within that control.  Moving the control
@@ -784,98 +783,99 @@ protected:
      *  Height, and Width) also become relative to the origin of the parent
      *  control.
      *
-     *  \param pclParent_ Pointer to the control's parent control
+     *  @param pclParent_ Pointer to the control's parent control
      */
     void SetParentControl(GuiControl* pclParent_) { m_pclParentControl = pclParent_; }
-    /*!
-     *  \brief SetParentWindow
+    /**
+     *  @brief SetParentWindow
      *
      *  Set the parent window of this control.  All controls within the same window
      *  are all associated together, and share events targetted towards a specific
      *  window.  Event tabbing, focus, and Z-ordering is also shared between controls
      *  within a window.
      *
-     *  \param pclWindow_ Pointer to the control's parent window.
+     *  @param pclWindow_ Pointer to the control's parent window.
      */
     void SetParentWindow(GuiWindow* pclWindow_) { m_pclParentWindow = pclWindow_; }
-    /*!
-     *  \brief GetParentControl
+    /**
+     *  @brief GetParentControl
      *
      *  Return the pointer to the control's currently-assigned parent control.
      *
-     *  \return Pointer to the Control's currently assigned parent control.
+     *  @return Pointer to the Control's currently assigned parent control.
      */
     GuiControl* GetParentControl() { return m_pclParentControl; }
-    /*!
-     *  \brief GetParentWindow
+    /**
+     *  @brief GetParentWindow
      *
      *  Get the parent window of this control
      *
-     *  \return Pointer to the control's window
+     *  @return Pointer to the control's window
      */
     GuiWindow* GetParentWindow() { return m_pclParentWindow; }
-    /*!
-     *  \brief ClearStale
+    /**
+     *  @brief ClearStale
      *
      *  Clear the stale flag for this control.  Should only be done after a
      *  redraw has been completed
      *
      */
     void ClearStale() { m_bStale = false; }
-    /*!
-     *  \brief SetStale
+    /**
+     *  @brief SetStale
      *
      *  Signal that the object needs to be redrawn.
      */
     void SetStale() { m_bStale = true; }
-    /*!
-     *  \brief SetAcceptFocus
+    /**
+     *  @brief SetAcceptFocus
      *
      *  Tell the control whether or not to accept focus.
      */
     void SetAcceptFocus(bool bFocus_) { m_bAcceptsFocus = bFocus_; }
-    /*!
-     *  \brief AcceptsFocus
+    /**
+     *  @brief AcceptsFocus
      *
      *  Returns whether or not this control accepts focus.
      */
     bool AcceptsFocus() { return m_bAcceptsFocus; }
+
 private:
-    /*! true if the control is stale and needs to be redrawn, false otherwise */
+    /** true if the control is stale and needs to be redrawn, false otherwise */
     bool m_bStale;
 
-    /*! Whether or not the control accepts focus or not */
+    /** Whether or not the control accepts focus or not */
     bool m_bAcceptsFocus;
 
-    /*! The Z-Order (depth) of the control. Only the highest order controls
+    /** The Z-Order (depth) of the control. Only the highest order controls
         are visible at any given location  */
     uint8_t m_u8ZOrder;
 
-    /*! Index of the control in the window.  This is used for setting focus
+    /** Index of the control in the window.  This is used for setting focus
         when transitioning from control to control on a window  */
     uint8_t m_u8ControlIndex;
 
-    /*! Topmost location of the control on the window  */
+    /** Topmost location of the control on the window  */
     uint16_t m_u16Top;
 
-    /*! Leftmost location of the control on the window  */
+    /** Leftmost location of the control on the window  */
     uint16_t m_u16Left;
 
-    /*! Width of the control in pixels  */
+    /** Width of the control in pixels  */
     uint16_t m_u16Width;
 
-    /*! Height of the control in pixels  */
+    /** Height of the control in pixels  */
     uint16_t m_u16Height;
 
-    /*! Pointer to the parent control  */
+    /** Pointer to the parent control  */
     GuiControl* m_pclParentControl;
 
-    /*! Pointer to the parent window associated with this control  */
+    /** Pointer to the parent window associated with this control  */
     GuiWindow* m_pclParentWindow;
 };
 
 //---------------------------------------------------------------------------
-/*!
+/**
  *  Stub control class, used for testing out the GUI framework where certain
  *  controls have not yet been implemented.
  */
@@ -885,7 +885,7 @@ public:
     virtual void        Init() {}
     virtual void        Draw() {}
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_) { return GUI_EVENT_OK; }
-    virtual void Activate(bool bActivate_) {}
+    virtual void        Activate(bool bActivate_) {}
 };
 
-} //namespace Mark3
+} // namespace Mark3

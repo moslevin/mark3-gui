@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_panel.cpp
-    \brief GUI Panel Control Implementation
+/**
+    @file control_panel.cpp
+    @brief GUI Panel Control Implementation
 */
 
 #include "gui.h"
@@ -22,7 +22,8 @@ See license.txt for more information
 #include "graphics.h"
 #include "control_label.h"
 #include "gui_palette.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 void LabelControl::Init()
 {
@@ -79,4 +80,4 @@ void LabelControl::Draw()
     pclDriver->Text(&stText);
     pclDriver->ClearWindow();
 }
-} //namespace Mark3
+} // namespace Mark3

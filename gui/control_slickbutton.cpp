@@ -11,19 +11,19 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_button.cpp
-    \brief GUI Button Control Implementation
+/**
+    @file control_button.cpp
+    @brief GUI Button Control Implementation
 
     Basic pushbutton control with an up/down state.
 */
 
 #include "control_slickbutton.h"
 #include "gui.h"
-#include "kernelaware.h"
 #include <stdio.h>
 #include <stdlib.h>
-namespace Mark3 {
+namespace Mark3
+{
 /* Control looks somthing like this:
 
    ----------------------------
@@ -261,4 +261,4 @@ void SlickButtonControl::Activate(bool bActivate_)
     }
     SetStale();
 }
-} //namespace Mark3
+} // namespace Mark3

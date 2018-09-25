@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 =========================================================================== */
-/*!
-    \file draw.h
-    \brief Raster graphics APIs
+/**
+    @file draw.h
+    @brief Raster graphics APIs
     Description:
         Implements basic drawing functionality.  This forms a hardware abstraction
         layer which requires a backend for rendering.
@@ -27,7 +27,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 //---------------------------------------------------------------------------
 // Event definitions for 2D hardware accelerated graphics functions
 typedef enum {
@@ -49,8 +48,8 @@ typedef enum {
 } DisplayEvent_t;
 
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a pixel
+/**
+ *  @brief Defines a pixel
  */
 typedef struct {
     uint16_t u16X;   //!< X coordinate of the pixel
@@ -59,8 +58,8 @@ typedef struct {
 } DrawPoint_t;
 
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a simple line
+/**
+ *  @brief Defines a simple line
  */
 typedef struct {
     uint16_t u16X1;  //!< Starting X coordinate
@@ -70,8 +69,8 @@ typedef struct {
     COLOR    uColor; //!< Color of the pixel
 } DrawLine_t;
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a rectangle
+/**
+ *  @brief Defines a rectangle
  */
 typedef struct {
     uint16_t u16Left;     //!< Leftmost pixel of the rectangle
@@ -83,8 +82,8 @@ typedef struct {
     COLOR    uFillColor;  //!< Color of the interior of the rectangle
 } DrawRectangle_t;
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a circle
+/**
+ *  @brief Defines a circle
  */
 typedef struct {
     uint16_t u16X;        //!< Center X pixel
@@ -95,8 +94,8 @@ typedef struct {
     COLOR    uFillColor;  //!< Fill color for the circle
 } DrawCircle_t;
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a ellipse
+/**
+ *  @brief Defines a ellipse
  */
 typedef struct {
     uint16_t u16X;      //!< Center X pixel
@@ -106,8 +105,8 @@ typedef struct {
     COLOR    uColor;    //!< Color of the ellipse perimeter
 } DrawEllipse_t;
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a bitmap
+/**
+ *  @brief Defines a bitmap
  */
 typedef struct {
     uint16_t u16X;      //!< Leftmost pixel
@@ -118,8 +117,8 @@ typedef struct {
     uint8_t* pu8Data;   //!< Pixel data pointer
 } DrawBitmap_t;
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a 1-bit 2D bitmap of arbitrary resolution
+/**
+ *  @brief Defines a 1-bit 2D bitmap of arbitrary resolution
  */
 typedef struct {
     uint16_t u16X;      //!< Leftmost pixel
@@ -131,8 +130,8 @@ typedef struct {
 } DrawStamp_t;          // monochrome stamp, bitpacked 8bpp
 
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines a bitmap-rendered string
+/**
+ *  @brief Defines a bitmap-rendered string
  */
 typedef struct {
     uint16_t    u16Left;  //!< Leftmost pixel of the text
@@ -158,8 +157,8 @@ typedef struct {
 } TextFX_t;
 
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines the active window - establishes boundaries for drawing on
+/**
+ *  @brief Defines the active window - establishes boundaries for drawing on
  *  the current display.  Only pixels drawn inside the surface boundaries are
  *  rendered to the output
  */
@@ -171,8 +170,8 @@ typedef struct {
 } DrawWindow_t;
 
 //---------------------------------------------------------------------------
-/*!
- *  \brief Simple 2D copy/paste.  Moves a bitmap specified by the given source
+/**
+ *  @brief Simple 2D copy/paste.  Moves a bitmap specified by the given source
  *  coordinates on-surface to the destination coordinates.
  */
 typedef struct {
@@ -185,8 +184,8 @@ typedef struct {
 } DrawMove_t;
 
 //---------------------------------------------------------------------------
-/*!
- *  \brief Specifies a single 2D point.  When used in arrays, this provides
+/**
+ *  @brief Specifies a single 2D point.  When used in arrays, this provides
  *  a way to draw vector paths, which form the basis of the polygon data
  *  structures.
  */
@@ -196,8 +195,8 @@ typedef struct {
 } DrawVector_t;
 
 //---------------------------------------------------------------------------
-/*!
- *  \brief Defines the structure of an arbitrary polygon.  Can be used to
+/**
+ *  @brief Defines the structure of an arbitrary polygon.  Can be used to
  *  specify the
  */
 typedef struct {
@@ -207,4 +206,4 @@ typedef struct {
     DrawVector_t* pstVector;    //!< Vector points making the polygon
 } DrawPoly_t;
 
-} //namespace Mark3
+} // namespace Mark3

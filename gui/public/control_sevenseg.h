@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_progress.h
-    \brief GUI Progress Bar Control
+/**
+    @file control_progress.h
+    @brief GUI Progress Bar Control
 
     A simple progress bar control using lines and rectangles to display
     the status of an operation from initialization to completion
@@ -27,7 +27,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 class SevenSegControl : public GuiControl
 {
 public:
@@ -35,8 +34,8 @@ public:
 
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_);
-    virtual void Activate(bool bActivate_) {}
-    void SetValue(uint16_t u16Value_)
+    virtual void        Activate(bool bActivate_) {}
+    void                SetValue(uint16_t u16Value_)
     {
         m_u16Value = u16Value_;
         SetStale();
@@ -47,8 +46,9 @@ public:
         SetStale();
     }
     uint16_t GetValue(void) { return m_u16Value; }
+
 private:
     uint16_t m_u16Value;
     bool     m_bColon;
 };
-} //namespace Mark3
+} // namespace Mark3

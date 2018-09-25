@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_gamepanel.h
-    \brief GUI Game Panel Control
+/**
+    @file control_gamepanel.h
+    @brief GUI Game Panel Control
 
     A game panel is a blank UI element whose dimensions define the
     dimensions of a gameplay surface.  The element triggers a draw() call
@@ -29,7 +29,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 class GamePanelControl : public GuiControl
 {
 public:
@@ -41,8 +40,9 @@ public:
     }
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_);
-    virtual void Activate(bool bActivate_) {}
+    virtual void        Activate(bool bActivate_) {}
+
 private:
     JoystickEvent_t m_stJoy;
 };
-} //namespace Mark3
+} // namespace Mark3

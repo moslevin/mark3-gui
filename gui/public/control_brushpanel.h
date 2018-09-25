@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_brushpanel.h
-    \brief GUI Panel Control With a Brushed-Metal Finish
+/**
+    @file control_brushpanel.h
+    @brief GUI Panel Control With a Brushed-Metal Finish
 */
 #pragma once
 
@@ -23,14 +23,14 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 class BrushPanelControl : public GuiControl
 {
 public:
     virtual void        Init() { SetAcceptFocus(false); }
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_) { return GUI_EVENT_OK; }
-    virtual void Activate(bool bActivate_) {}
+    virtual void        Activate(bool bActivate_) {}
+
 private:
 };
-} //namespace Mark3
+} // namespace Mark3

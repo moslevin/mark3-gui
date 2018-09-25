@@ -11,18 +11,17 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file gui.cpp
-    \brief Graphical user Interface classes and data structure definitions.
+/**
+    @file gui.cpp
+    @brief Graphical user Interface classes and data structure definitions.
 */
 
-#include "message.h"
-#include "kerneltypes.h"
+#include "mark3.h"
 #include "gui.h"
-#include "fixed_heap.h"
 #include "memutil.h"
-#include "kernelaware.h"
-namespace Mark3 {
+
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 void GuiWindow::AddControl(GuiControl* pclControl_, GuiControl* pclParent_)
 {
@@ -226,11 +225,14 @@ void GuiWindow::ProcessEvent(GuiEvent_t* pstEvent_)
                 }
             } else if (EVENT_TYPE_JOYSTICK == pstEvent_->u8EventType) {
                 if (((pstEvent_->stJoystick.Current.bUp != 0u) && ((pstEvent_->stJoystick.Previous.bUp) == 0u))
-                    || ((pstEvent_->stJoystick.Current.bLeft != 0u) && ((pstEvent_->stJoystick.Previous.bLeft) == 0u))) {
+                    || ((pstEvent_->stJoystick.Current.bLeft != 0u)
+                        && ((pstEvent_->stJoystick.Previous.bLeft) == 0u))) {
                     // Cycle focus *backwards*
                     CycleFocus(false);
-                } else if (((pstEvent_->stJoystick.Current.bRight != 0u) && ((pstEvent_->stJoystick.Previous.bRight) == 0u))
-                           || ((pstEvent_->stJoystick.Current.bDown != 0u) && ((pstEvent_->stJoystick.Previous.bDown) == 0u))) {
+                } else if (((pstEvent_->stJoystick.Current.bRight != 0u)
+                            && ((pstEvent_->stJoystick.Previous.bRight) == 0u))
+                           || ((pstEvent_->stJoystick.Current.bDown != 0u)
+                               && ((pstEvent_->stJoystick.Previous.bDown) == 0u))) {
                     // Cycle focus *forewards*
                     CycleFocus(true);
                 }
@@ -450,7 +452,7 @@ bool GuiEventSurface::SendEvent(GuiEvent_t* pstEvent_)
     }
 
     // Allocate a copy of the event from the heap
-    GuiEvent_t* pstEventCopy; //!! = static_cast<GuiEvent_t*>(SystemHeap::Alloc(sizeof(GuiEvent_t)));
+    auto* pstEventCopy = reinterpret_cast<GuiEvent_t*>(AutoAlloc::NewRawData(sizeof(GuiEvent_t)));
 
     // If the allocation fails, push the message back to the global pool and bail
     if (pstEventCopy == 0) {
@@ -490,7 +492,7 @@ bool GuiEventSurface::ProcessEvent()
 
     // Free the message and event as soon as possible, since
     // they are shared system resources
-    //!! SystemHeap::Free(pclMessage->GetData());
+    AutoAlloc::DestroyRawData(pclMessage->GetData());
     m_pclMessagePool->Push(pclMessage);
 
     // Special case check - target ID is the highest Z-ordered window(s) ONLY.
@@ -536,13 +538,11 @@ void GuiEventSurface::CopyEvent(GuiEvent_t* pstDst_, GuiEvent_t* pstSrc_)
     uint8_t* pu8Dst_ = (uint8_t*)pstDst_;
     uint8_t* pu8Src_ = (uint8_t*)pstSrc_;
     uint8_t  i;
-    for (i = 0; i < sizeof(GuiEvent_t); i++) {
-        *pu8Dst_++ = *pu8Src_++;
-    }
+    for (i = 0; i < sizeof(GuiEvent_t); i++) { *pu8Dst_++ = *pu8Src_++; }
 }
 
 //---------------------------------------------------------------------------
-void GuiEventSurface::InvalidateRegion(uint16_t u16Left_, uint16_t u16Top_, uint16_t u16Width_, uint16_t  /*u16Height_*/)
+void GuiEventSurface::InvalidateRegion(uint16_t u16Left_, uint16_t u16Top_, uint16_t u16Width_, uint16_t /*u16Height_*/)
 {
     LinkListNode* pclTempNode = m_clWindowList.GetHead();
     while (pclTempNode != 0) {
@@ -569,4 +569,4 @@ void GuiControl::GetControlOffset(uint16_t* pu16X_, uint16_t* pu16Y_)
         *pu16Y_ += m_pclParentWindow->GetTop();
     }
 }
-} //namespace Mark3
+} // namespace Mark3

@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_panel.h
-    \brief GUI Panel Control
+/**
+    @file control_panel.h
+    @brief GUI Panel Control
 
     The "panel" is probably the simplest control that can be implemented in a
     GUI.  It serves as a dock for other controls, and also as an example
@@ -30,7 +30,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 class PanelControl : public GuiControl
 {
 public:
@@ -41,9 +40,10 @@ public:
     }
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_) { return GUI_EVENT_OK; }
-    virtual void Activate(bool bActivate_) {}
-    void SetColor(COLOR eColor_) { m_uColor = eColor_; }
+    virtual void        Activate(bool bActivate_) {}
+    void                SetColor(COLOR eColor_) { m_uColor = eColor_; }
+
 private:
     COLOR m_uColor;
 };
-} //namespace Mark3
+} // namespace Mark3

@@ -11,10 +11,10 @@
 Copyright (c) 2013 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file graphics_st7735.cpp
+/**
+    @file graphics_st7735.cpp
 
-    \brief Graphics driver implementation on ST7735 hardware
+    @brief Graphics driver implementation on ST7735 hardware
 */
 /***************************************************
   Note:  This module is based off of 3rd party code,
@@ -51,7 +51,8 @@ See license.txt for more information
 #define SPI_CLK_MASK_2 (0x01)
 
 //---------------------------------------------------------------------------
-namespace {
+namespace
+{
 // Rather than a bazillion writecommand() and writedata() calls, screen
 // initialization commands and arguments are organized in these tables
 // stored in PROGMEM.  The table may look bulky, but that's mostly the
@@ -198,12 +199,12 @@ namespace Mark3
 void GraphicsST7735::CommandList(const uint8_t* pu8Data_)
 {
     auto u8NumCommands = pgm_read_byte(pu8Data_++); // Number of commands to follow
-    while (u8NumCommands--)                            // For each command...
+    while (u8NumCommands--)                         // For each command...
     {
         WriteCommand(pgm_read_byte(pu8Data_++)); // Read, issue command
 
-        auto  u8NumArgs = pgm_read_byte(pu8Data_++); // Number of args to follow
-        uint16_t u16Ms  = u8NumArgs & DELAY;         // If hibit set, delay follows args
+        auto     u8NumArgs = pgm_read_byte(pu8Data_++); // Number of args to follow
+        uint16_t u16Ms     = u8NumArgs & DELAY;         // If hibit set, delay follows args
 
         u8NumArgs &= ~DELAY; // Mask out delay bit
 
@@ -225,27 +226,26 @@ void GraphicsST7735::CommandList(const uint8_t* pu8Data_)
 
 #if use_HW_SPI
 //---------------------------------------------------------------------------
-#define TFT_SPI_WRITE(x)                                                     \
-    {                                                                        \
-        TFT_SPI_SPDR = (x);                                                  \
-        while (!(TFT_SPI_SPSR & (1 << TFT_SPI_SPIF))) {                      \
-        }                                                                    \
+#define TFT_SPI_WRITE(x)                                                                                               \
+    {                                                                                                                  \
+        TFT_SPI_SPDR = (x);                                                                                            \
+        while (!(TFT_SPI_SPSR & (1 << TFT_SPI_SPIF))) {}                                                               \
     }
 #else
 //---------------------------------------------------------------------------
-#define TFT_SPI_WRITE(x)                                                     \
-    {                                                                        \
-        uint8_t u8Mask = 0x80;                                               \
-        while (u8Mask) {                                                     \
-            if (u8Mask & x) {                                                \
-                TFT_SPI_MOSI_PORT |= TFT_SPI_MOSI_PIN;                       \
-            } else {                                                         \
-                TFT_SPI_MOSI_PORT &= ~TFT_SPI_MOSI_PIN;                      \
-            }                                                                \
-            TFT_SPI_SCLK_OUT |= TFT_SPI_SCLK_PIN;                            \
-            TFT_SPI_SCLK_OUT &= ~TFT_SPI_SCLK_PIN;                           \
-            u8Mask >>= 1;                                                    \
-        }                                                                    \
+#define TFT_SPI_WRITE(x)                                                                                               \
+    {                                                                                                                  \
+        uint8_t u8Mask = 0x80;                                                                                         \
+        while (u8Mask) {                                                                                               \
+            if (u8Mask & x) {                                                                                          \
+                TFT_SPI_MOSI_PORT |= TFT_SPI_MOSI_PIN;                                                                 \
+            } else {                                                                                                   \
+                TFT_SPI_MOSI_PORT &= ~TFT_SPI_MOSI_PIN;                                                                \
+            }                                                                                                          \
+            TFT_SPI_SCLK_OUT |= TFT_SPI_SCLK_PIN;                                                                      \
+            TFT_SPI_SCLK_OUT &= ~TFT_SPI_SCLK_PIN;                                                                     \
+            u8Mask >>= 1;                                                                                              \
+        }                                                                                                              \
     }
 
 #endif
@@ -451,8 +451,8 @@ void GraphicsST7735::Rectangle(DrawRectangle_t* pstRectangle_)
 
         SetOpWindow(pstRectangle_);
 
-        auto u32Pixels =static_cast<uint32_t>(pstRectangle_->u16Bottom - pstRectangle_->u16Top + 1)
-                             * static_cast<uint32_t>(pstRectangle_->u16Right - pstRectangle_->u16Left + 1);
+        auto u32Pixels = static_cast<uint32_t>(pstRectangle_->u16Bottom - pstRectangle_->u16Top + 1)
+                         * static_cast<uint32_t>(pstRectangle_->u16Right - pstRectangle_->u16Left + 1);
 
         // Set the high/low bytes of the color that we're going to write
         auto u8High = static_cast<uint8_t>((pstRectangle_->uFillColor) >> 8);
@@ -577,8 +577,8 @@ void GraphicsST7735::Bitmap(DrawBitmap_t* pstBitmap_)
 
     SetOpWindow(&stRect);
 
-    auto u32Pixels = static_cast<uint32_t>(pstBitmap_->u16Width) * static_cast<uint32_t>(pstBitmap_->u16Height);
-    auto* pu8Data = pstBitmap_->pu8Data;
+    auto  u32Pixels = static_cast<uint32_t>(pstBitmap_->u16Width) * static_cast<uint32_t>(pstBitmap_->u16Height);
+    auto* pu8Data   = pstBitmap_->pu8Data;
 
     // Write the pixel data out, assuming native 16-bit format.
     TFT_CD_OUT |= TFT_CD_PIN;
@@ -595,4 +595,4 @@ void GraphicsST7735::Bitmap(DrawBitmap_t* pstBitmap_)
 
     TFT_CS_OUT |= TFT_CS_PIN;
 }
-} //namespace Mark3
+} // namespace Mark3

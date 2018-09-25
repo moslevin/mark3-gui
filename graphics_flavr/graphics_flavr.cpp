@@ -11,10 +11,10 @@
 Copyright (c) 2013 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file graphics_flavr.cpp
+/**
+    @file graphics_flavr.cpp
 
-    \brief Graphics driver implementation for flAVR co-simulation
+    @brief Graphics driver implementation for flAVR co-simulation
 */
 
 #include "graphics_flavr.h"
@@ -24,7 +24,7 @@ See license.txt for more information
 #include "draw.h"
 
 //!! These need to be in the global namespace for flAVR to pick the names up.
-volatile uint8_t      g_u8GfxCommand = 0;
+volatile uint8_t             g_u8GfxCommand = 0;
 volatile Mark3::DrawPoint_t* g_pclPoint     = 0;
 
 namespace Mark3
@@ -41,4 +41,4 @@ void GraphicsFlavr::Flip(void)
 {
     g_u8GfxCommand = 2;
 }
-} //namespace Mark3
+} // namespace Mark3

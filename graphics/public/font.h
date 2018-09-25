@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file font.h
-    \brief Font structure definitions
+/**
+    @file font.h
+    @brief Font structure definitions
 */
 #pragma once
 
@@ -22,7 +22,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 //---------------------------------------------------------------------------
 typedef struct {
     uint8_t u8Width;    //!< Width of this font glyph in pixels
@@ -32,11 +31,12 @@ typedef struct {
 } Glyph_t;
 
 //---------------------------------------------------------------------------
-/*!
+/**
     The size of the glyph is the width*height (in bytes), plus the overhead
     of the struct parameters.
 */
-#define GLYPH_SIZE(x) ((static_cast<uint16_t>((x->u8Width + 7) >> 3) * static_cast<uint16_t>(x->u8Height)) + sizeof(Glyph_t) - 1)
+#define GLYPH_SIZE(x)                                                                                                  \
+    ((static_cast<uint16_t>((x->u8Width + 7) >> 3) * static_cast<uint16_t>(x->u8Height)) + sizeof(Glyph_t) - 1)
 
 //---------------------------------------------------------------------------
 typedef struct {
@@ -47,4 +47,4 @@ typedef struct {
     const char*              szName;
     const FONT_STORAGE_TYPE* pu8FontData;
 } Font_t;
-} //namespace Mark3
+} // namespace Mark3

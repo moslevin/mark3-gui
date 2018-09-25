@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_notification.h
-    \brief Notification pop-up control
+/**
+    @file control_notification.h
+    @brief Notification pop-up control
 
     A pop-up control that can be used to present the user with information
     about system state changes, events, etc.
@@ -26,7 +26,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 class NotificationControl : public GuiControl
 {
 public:
@@ -41,10 +40,10 @@ public:
 
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_);
-    virtual void Activate(bool bActivate_) {}
-    void SetFont(Font_t* pstFont_) { m_pstFont = pstFont_; }
-    void SetCaption(const char* szCaption_) { m_szCaption = szCaption_; }
-    void Trigger(uint16_t u16Timeout_)
+    virtual void        Activate(bool bActivate_) {}
+    void                SetFont(Font_t* pstFont_) { m_pstFont = pstFont_; }
+    void                SetCaption(const char* szCaption_) { m_szCaption = szCaption_; }
+    void                Trigger(uint16_t u16Timeout_)
     {
         m_u16Timeout = u16Timeout_;
         m_bTrigger   = true;
@@ -59,4 +58,4 @@ private:
     bool        m_bTrigger;
     bool        m_bVisible;
 };
-} //namespace Mark3
+} // namespace Mark3

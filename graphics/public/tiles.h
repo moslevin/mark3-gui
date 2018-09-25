@@ -22,9 +22,8 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 //---------------------------------------------------------------------------
-/*!
+/**
     Define the pixel format used by a given tile.  This is used to greatly
     reduce the memory footprint of tiles, by using color-indexing with
     fewer bits-per-pixel than the native pixel-format of the display.
@@ -43,9 +42,9 @@ typedef enum {
 } TileFormat_t;
 
 //---------------------------------------------------------------------------
-/*!
-  * \brief TileDef_t Structure defining parameters for a color-indexed tile
-  */
+/**
+ * @brief TileDef_t Structure defining parameters for a color-indexed tile
+ */
 typedef struct {
     TileFormat_t m_eFormat; //!< Color-indexing of the tile (bits-per-pixel)
 
@@ -63,47 +62,47 @@ typedef struct {
 class Tile_8x8
 {
 public:
-    /*!
-     * \brief LoadTile
+    /**
+     * @brief LoadTile
      *
      * Load the tile specified by pstTileDef_ into memory.  This takes some
      * time as it parses the indexed colors, does a lookup, and then writes
      * to the local tile buffer.  Once a tile has been loaded, it can be
      * rendered any number of times.
 
-     * \param pstTileDef_ Pointer to a struct containing configuration
+     * @param pstTileDef_ Pointer to a struct containing configuration
      *                    data for the tile to be loaded.
      */
     void LoadTile(TileDef_t* pstTileDef_);
 
-    /*!
-     * \brief Render
+    /**
+     * @brief Render
      *
      * Render loaded tile data to a specific location on a specified
      * display.
      *
-     * \param pclDriver_ Pointer to the graphics driver to render with
+     * @param pclDriver_ Pointer to the graphics driver to render with
      *
-     * \param u16X_ Leftmost pixel index
-     * \param u16Y_ Topmost pixel index
+     * @param u16X_ Leftmost pixel index
+     * @param u16Y_ Topmost pixel index
      */
     void Render(GraphicsDriver* pclDriver_, uint16_t u16X_, uint16_t u16Y_);
 
 private:
-    /*!
-     * \brief m_auTileBuffer Object's local storage for tile data
+    /**
+     * @brief m_auTileBuffer Object's local storage for tile data
      */
     COLOR m_auTileBuffer[TILE_8x8_BUFFER_SIZE];
 
-    /*!
-     * \brief m_u8Width Width of the tile (may be smaller than width of buffer)
+    /**
+     * @brief m_u8Width Width of the tile (may be smaller than width of buffer)
      */
     uint8_t m_u8Width;
 
-    /*!
-     * \brief m_u8Height Height of the tile (may be smaler than the height of buffer)
+    /**
+     * @brief m_u8Height Height of the tile (may be smaler than the height of buffer)
      */
     uint8_t m_u8Height;
 };
 
-} //namespace Mark3
+} // namespace Mark3
