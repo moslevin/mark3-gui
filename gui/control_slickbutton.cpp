@@ -20,8 +20,6 @@ See license.txt for more information
 
 #include "control_slickbutton.h"
 #include "gui.h"
-#include <stdio.h>
-#include <stdlib.h>
 namespace Mark3
 {
 /* Control looks somthing like this:

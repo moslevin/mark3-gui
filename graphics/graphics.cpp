@@ -23,7 +23,6 @@ See license.txt for more information
 #include "colorspace.h"
 #include "font.h"
 
-#include <stdio.h>
 namespace Mark3
 {
 //---------------------------------------------------------------------------
