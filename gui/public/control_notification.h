@@ -33,7 +33,7 @@ public:
     {
         SetAcceptFocus(false);
         m_szCaption = "";
-        m_pstFont   = NULL;
+        m_pstFont   = nullptr;
         m_bVisible  = true;
         m_bTrigger  = false;
     }

@@ -102,7 +102,7 @@ private:
 class ScreenManager
 {
 public:
-    ScreenManager() { m_pclSurface = NULL; }
+    ScreenManager() { m_pclSurface = nullptr; }
     /**
      *  Add a new screen to the screen manager.
      */
@@ -118,7 +118,7 @@ public:
     void RemoveScreen(Screen* pclScreen_)
     {
         m_clScreenList.Remove(pclScreen_);
-        pclScreen_->SetManager(NULL);
+        pclScreen_->SetManager(nullptr);
     }
 
     /**

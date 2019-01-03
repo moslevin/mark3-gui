@@ -38,10 +38,10 @@ namespace Mark3
 void SlickButtonControl::Init()
 {
     m_szCaption      = "Button";
-    m_pstFont        = NULL;
+    m_pstFont        = nullptr;
     m_bState         = false;
-    m_pfCallback     = NULL;
-    m_pvCallbackData = NULL;
+    m_pfCallback     = nullptr;
+    m_pvCallbackData = nullptr;
     m_u8Timeout      = 0;
     SetAcceptFocus(true);
 }
@@ -175,7 +175,7 @@ GuiReturn_t SlickButtonControl::ProcessEvent(GuiEvent_t* pstEvent_)
                     m_bState    = false;
                     m_u8Timeout = 10;
                     // SetAcceptFocus(false);
-                    // GetParentWindow()->SetFocus(NULL);
+                    // GetParentWindow()->SetFocus(nullptr);
                     SetStale();
                 }
             }
@@ -189,7 +189,7 @@ GuiReturn_t SlickButtonControl::ProcessEvent(GuiEvent_t* pstEvent_)
                     m_bState    = false;
                     m_u8Timeout = 10;
                     // SetAcceptFocus(false);
-                    // GetParentWindow()->SetFocus(NULL);
+                    // GetParentWindow()->SetFocus(nullptr);
                     SetStale();
                 }
                 SetStale();
@@ -222,7 +222,7 @@ GuiReturn_t SlickButtonControl::ProcessEvent(GuiEvent_t* pstEvent_)
                         m_bState    = false;
                         m_u8Timeout = 10;
                         SetAcceptFocus(false);
-                        GetParentWindow()->SetFocus(NULL);
+                        GetParentWindow()->SetFocus(nullptr);
                         SetStale();
                     }
                 }

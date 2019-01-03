@@ -52,6 +52,6 @@ Screen* ScreenManager::FindScreenByName(const char* szName_)
         pclTempNode = pclTempNode->GetNext();
     }
 
-    return NULL;
+    return nullptr;
 }
 } // namespace Mark3

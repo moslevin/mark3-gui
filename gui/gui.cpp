@@ -45,7 +45,7 @@ void GuiWindow::RemoveControl(GuiControl* pclControl_)
     } else if (pclControl_->GetNext() != 0) {
         m_pclInFocus = static_cast<GuiControl*>(pclControl_->GetNext());
     } else {
-        m_pclInFocus = NULL;
+        m_pclInFocus = nullptr;
     }
     m_clControlList.Remove(static_cast<LinkListNode*>(pclControl_));
     m_u8ControlCount--;
@@ -251,7 +251,7 @@ void GuiWindow::ProcessEvent(GuiEvent_t* pstEvent_)
         switch (pstEvent_->u8EventType) {
             case EVENT_TYPE_MOUSE:
             case EVENT_TYPE_TOUCH: {
-                GuiControl* pclTargetControl = NULL;
+                GuiControl* pclTargetControl = nullptr;
 
                 // Read the target X/Y coordinates out of the event struct
                 if (EVENT_TYPE_TOUCH == pstEvent_->u8EventType) {
@@ -292,7 +292,7 @@ void GuiWindow::ProcessEvent(GuiEvent_t* pstEvent_)
                     // control, then deactive that control.
                     if ((m_pclInFocus != 0) && (m_pclInFocus != pclTargetControl)) {
                         m_pclInFocus->Activate(false);
-                        m_pclInFocus = NULL;
+                        m_pclInFocus = nullptr;
                     }
                     (static_cast<GuiControl*>(pclTargetControl))->ProcessEvent(pstEvent_);
                 }
@@ -327,7 +327,7 @@ void GuiWindow::CycleFocus(bool bForward_)
                 return;
             }
             pclTempNode  = static_cast<GuiControl*>(m_pclInFocus);
-            pclStartNode = NULL;
+            pclStartNode = nullptr;
         } else {
             // Deactivate the control that's losing focus
             static_cast<GuiControl*>(m_pclInFocus)->Activate(false);
@@ -374,7 +374,7 @@ void GuiWindow::CycleFocus(bool bForward_)
                 return;
             }
             pclTempNode  = static_cast<GuiControl*>(m_pclInFocus);
-            pclStartNode = NULL;
+            pclStartNode = nullptr;
         } else {
             // Deactivate the control that's losing focus
             static_cast<GuiControl*>(m_pclInFocus)->Activate(false);
@@ -419,7 +419,7 @@ GuiWindow* GuiEventSurface::FindWindowByName(const char* szName_)
         pclTempNode = pclTempNode->GetNext();
     }
 
-    return NULL;
+    return nullptr;
 }
 
 //---------------------------------------------------------------------------

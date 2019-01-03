@@ -235,7 +235,7 @@ public:
     void Init()
     {
         m_u8ControlCount = 0;
-        m_pclDriver      = NULL;
+        m_pclDriver      = nullptr;
         m_szName         = "";
         ClearNode();
     }
@@ -265,7 +265,7 @@ public:
      *  forwarded to the controls appropriately.
      *
      *  @param pclControl_ Pointer to the control object to add
-     *  @param pclParent_  Pointer to the control's "parent" object (or NULL)
+     *  @param pclParent_  Pointer to the control's "parent" object (or nullptr)
      */
     void AddControl(GuiControl* pclControl_, GuiControl* pclParent_);
 
@@ -547,7 +547,7 @@ public:
     /**
      *  @brief FindWindowByName
      *
-     *  Return a pointer to a window by name, or NULL on failure
+     *  Return a pointer to a window by name, or nullptr on failure
      */
     GuiWindow* FindWindowByName(const char* szName_);
 

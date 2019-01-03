@@ -30,7 +30,7 @@ void LabelControl::Init()
     m_uBackColor   = COLOR_BLACK;
     m_uFontColor   = COLOR_WHITE;
     m_bTransparent = false;
-    m_pstFont      = NULL;
+    m_pstFont      = nullptr;
     m_pcCaption    = "";
     SetAcceptFocus(false);
 }
