@@ -1,5 +1,3 @@
 add_subdirectory(graphics)
 add_subdirectory(gui)
-#add_subdirectory(graphics_st7735)
-#add_subdirectory(graphics_flavr)
 add_subdirectory(fonts)
