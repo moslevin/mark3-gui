@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_brushpanel.cpp
-    \brief GUI Panel Control Implementation with a brushed-metal finish.
+/**
+    @file control_brushpanel.cpp
+    @brief GUI Panel Control Implementation with a brushed-metal finish.
 */
 
 #include "gui.h"
@@ -22,7 +22,8 @@ See license.txt for more information
 #include "graphics.h"
 #include "control_brushpanel.h"
 #include "rand_lfsr.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 #define GREYSCALE_MIN (32)
 #define GREYSCALE_MAX (96)
@@ -69,4 +70,4 @@ void BrushPanelControl::Draw()
         pclDriver->Line(&stLine);
     }
 }
-} //namespace Mark3
+} // namespace Mark3

@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_progress.h
-    \brief GUI Progress Bar Control
+/**
+    @file control_progress.h
+    @brief GUI Progress Bar Control
 
     A simple progress bar control using lines and rectangles to display
     the status of an operation from initialization to completion
@@ -27,18 +27,17 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 class ProgressControl : public GuiControl
 {
 public:
     virtual void        Init();
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_);
-    virtual void Activate(bool bActivate_) {}
-    void SetBackColor(COLOR eColor_) { m_uBackColor = eColor_; }
-    void SetProgressColor(COLOR eColor_) { m_uProgressColor = eColor_; }
-    void SetBorderColor(COLOR eColor_) { m_uBorderColor = eColor_; }
-    void SetProgress(uint8_t u8Progress_);
+    virtual void        Activate(bool bActivate_) {}
+    void                SetBackColor(COLOR eColor_) { m_uBackColor = eColor_; }
+    void                SetProgressColor(COLOR eColor_) { m_uProgressColor = eColor_; }
+    void                SetBorderColor(COLOR eColor_) { m_uBorderColor = eColor_; }
+    void                SetProgress(uint8_t u8Progress_);
 
 private:
     COLOR   m_uBackColor;
@@ -46,4 +45,4 @@ private:
     COLOR   m_uBorderColor;
     uint8_t m_u8Progress;
 };
-} //namespace Mark3
+} // namespace Mark3

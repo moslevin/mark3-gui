@@ -12,9 +12,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_button.h
-    \brief GUI Button Control
+/**
+    @file control_button.h
+    @brief GUI Button Control
 
     Basic pushbutton control with an up/down state.
 */
@@ -29,14 +29,13 @@ typedef void (*ButtonCallback)(void* pvData_);
 
 namespace Mark3
 {
-
 class ButtonControl : public GuiControl
 {
 public:
     virtual void        Init();
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_);
-    virtual void Activate(bool bActivate_);
+    virtual void        Activate(bool bActivate_);
 
     void SetBGColor(COLOR eColor_) { m_uBGColor = eColor_; }
     void SetLineColor(COLOR eColor_) { m_u32ineColor = eColor_; }
@@ -65,4 +64,4 @@ private:
     ButtonCallback m_pfCallback;
 };
 
-} //namespace Mark3
+} // namespace Mark3

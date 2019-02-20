@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_gamepanel.cpp
-    \brief GUI Panel Control Implementation with joystick control and
+/**
+    @file control_gamepanel.cpp
+    @brief GUI Panel Control Implementation with joystick control and
            tick-based state machine updates.
 */
 
@@ -22,7 +22,8 @@ See license.txt for more information
 #include "draw.h"
 #include "graphics.h"
 #include "control_gamepanel.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 void GamePanelControl::Draw()
 {
@@ -47,4 +48,4 @@ GuiReturn_t GamePanelControl::ProcessEvent(GuiEvent_t* pstEvent_)
     }
     return GUI_EVENT_OK;
 }
-} //namespace Mark3
+} // namespace Mark3

@@ -11,19 +11,17 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_button.cpp
-    \brief GUI Button Control Implementation
+/**
+    @file control_button.cpp
+    @brief GUI Button Control Implementation
 
     Basic pushbutton control with an up/down state.
 */
 
 #include "control_slickbutton.h"
 #include "gui.h"
-#include "kernelaware.h"
-#include <stdio.h>
-#include <stdlib.h>
-namespace Mark3 {
+namespace Mark3
+{
 /* Control looks somthing like this:
 
    ----------------------------
@@ -40,10 +38,10 @@ namespace Mark3 {
 void SlickButtonControl::Init()
 {
     m_szCaption      = "Button";
-    m_pstFont        = NULL;
+    m_pstFont        = nullptr;
     m_bState         = false;
-    m_pfCallback     = NULL;
-    m_pvCallbackData = NULL;
+    m_pfCallback     = nullptr;
+    m_pvCallbackData = nullptr;
     m_u8Timeout      = 0;
     SetAcceptFocus(true);
 }
@@ -177,7 +175,7 @@ GuiReturn_t SlickButtonControl::ProcessEvent(GuiEvent_t* pstEvent_)
                     m_bState    = false;
                     m_u8Timeout = 10;
                     // SetAcceptFocus(false);
-                    // GetParentWindow()->SetFocus(NULL);
+                    // GetParentWindow()->SetFocus(nullptr);
                     SetStale();
                 }
             }
@@ -191,7 +189,7 @@ GuiReturn_t SlickButtonControl::ProcessEvent(GuiEvent_t* pstEvent_)
                     m_bState    = false;
                     m_u8Timeout = 10;
                     // SetAcceptFocus(false);
-                    // GetParentWindow()->SetFocus(NULL);
+                    // GetParentWindow()->SetFocus(nullptr);
                     SetStale();
                 }
                 SetStale();
@@ -224,7 +222,7 @@ GuiReturn_t SlickButtonControl::ProcessEvent(GuiEvent_t* pstEvent_)
                         m_bState    = false;
                         m_u8Timeout = 10;
                         SetAcceptFocus(false);
-                        GetParentWindow()->SetFocus(NULL);
+                        GetParentWindow()->SetFocus(nullptr);
                         SetStale();
                     }
                 }
@@ -261,4 +259,4 @@ void SlickButtonControl::Activate(bool bActivate_)
     }
     SetStale();
 }
-} //namespace Mark3
+} // namespace Mark3

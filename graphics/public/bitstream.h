@@ -18,23 +18,22 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 //---------------------------------------------------------------------------
 class BitStreamer
 {
 public:
-    /*!
-     * \brief Init
+    /**
+     * @brief Init
      *
      * Initialize the BitStreamer object prior to use
      *
-     * \param pu8Data_ Pointer to raw data to be streamed
-     * \param u16Size_ Size of pu8Data_ in bytes
+     * @param pu8Data_ Pointer to raw data to be streamed
+     * @param u16Size_ Size of pu8Data_ in bytes
      */
     void Init(uint8_t* pu8Data_, uint16_t u16Size_);
 
-    /*!
-     * \brief AdvanceByte
+    /**
+     * @brief AdvanceByte
      *
      * Advance byte index to the next full byte if the current bit index
      * is non-zero.  If the current bit index is zero, no action is taken.
@@ -42,14 +41,14 @@ public:
      */
     void AdvanceByte(void);
 
-    /*!
-     * \brief ReadBits
+    /**
+     * @brief ReadBits
      *
      * Read the next "n" bits from the stream, returning the result into an
      * 8-bit unsigned integer.
      *
-     * \param u8NumBits_ Number of bits to read (less than 8)
-     * \return Bits read as an 8-bit unsigned integer.
+     * @param u8NumBits_ Number of bits to read (less than 8)
+     * @return Bits read as an 8-bit unsigned integer.
      */
     uint8_t ReadBits(uint8_t u8NumBits_);
 
@@ -60,4 +59,4 @@ private:
     uint16_t m_u16Size;      //!< Length of data (in bytes)
 };
 
-} //namespace Mark3
+} // namespace Mark3

@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_slickprogress.cpp
-    \brief GUI Progress Bar Control, with flare.
+/**
+    @file control_slickprogress.cpp
+    @brief GUI Progress Bar Control, with flare.
 
     A simple progress bar control using lines and rectangles to display
     the status of an operation from initialization to completion
@@ -22,7 +22,8 @@ See license.txt for more information
 #include "kerneltypes.h"
 #include "draw.h"
 #include "control_slickprogress.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 void SlickProgressControl::Init()
 {
@@ -103,8 +104,8 @@ void SlickProgressControl::SetProgress(uint8_t u8Progress_)
 }
 
 //---------------------------------------------------------------------------
-GuiReturn_t SlickProgressControl::ProcessEvent(GuiEvent_t*  /*pstEvent_*/)
+GuiReturn_t SlickProgressControl::ProcessEvent(GuiEvent_t* /*pstEvent_*/)
 {
     return GUI_EVENT_OK;
 }
-} //namespace Mark3
+} // namespace Mark3

@@ -11,10 +11,10 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file "keycodes.h"
+/**
+    @file "keycodes.h"
 
-    \brief Standard ASCII keyboard codes
+    @brief Standard ASCII keyboard codes
 */
 #pragma once
 
@@ -22,7 +22,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 typedef enum {
     KEYCODE_LBUTTON = 0x01,
     KEYCODE_RBUTTON,
@@ -139,4 +138,4 @@ typedef enum {
     KEYCODE_PLAY = 0xFA,
     KEYCODE_ZOOM
 } KEYCODE;
-} //namespace Mark3
+} // namespace Mark3

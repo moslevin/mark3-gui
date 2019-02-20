@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_checkbox.h
-    \brief Checkbox Control
+/**
+    @file control_checkbox.h
+    @brief Checkbox Control
 
     A binary On/Off switch control
 */
@@ -26,7 +26,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 typedef void (*CheckCallback)(bool bChecked_);
 
 class CheckBoxControl : public GuiControl
@@ -35,15 +34,16 @@ public:
     virtual void        Init();
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_);
-    virtual void Activate(bool bActivate_) { SetStale(); }
-    void SetFont(Font_t* pstFont_) { m_pstFont = pstFont_; }
-    void SetCaption(const char* szCaption_) { m_szCaption = szCaption_; }
-    void SetCheck(bool bChecked_) { m_bChecked = bChecked_; }
-    void SetFontColor(COLOR uFontColor_) { m_uFontColor = uFontColor_; }
-    void SetBoxColor(COLOR uBoxColor_) { m_uBoxColor = uBoxColor_; }
-    void SetBackColor(COLOR uBackColor_) { m_uBackColor = uBackColor_; }
-    void SetCheckCallback(CheckCallback pfCallback_) { m_pfCheckCallback = pfCallback_; }
-    bool                                IsChecked(void) { return m_bChecked; }
+    virtual void        Activate(bool bActivate_) { SetStale(); }
+    void                SetFont(Font_t* pstFont_) { m_pstFont = pstFont_; }
+    void                SetCaption(const char* szCaption_) { m_szCaption = szCaption_; }
+    void                SetCheck(bool bChecked_) { m_bChecked = bChecked_; }
+    void                SetFontColor(COLOR uFontColor_) { m_uFontColor = uFontColor_; }
+    void                SetBoxColor(COLOR uBoxColor_) { m_uBoxColor = uBoxColor_; }
+    void                SetBackColor(COLOR uBackColor_) { m_uBackColor = uBackColor_; }
+    void                SetCheckCallback(CheckCallback pfCallback_) { m_pfCheckCallback = pfCallback_; }
+    bool                IsChecked(void) { return m_bChecked; }
+
 private:
     const char*   m_szCaption;
     COLOR         m_uBackColor;
@@ -53,4 +53,4 @@ private:
     bool          m_bChecked;
     CheckCallback m_pfCheckCallback;
 };
-} //namespace Mark3
+} // namespace Mark3

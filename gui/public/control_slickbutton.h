@@ -12,9 +12,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_slickbutton.h
-    \brief GUI Button Control, with a flare
+/**
+    @file control_slickbutton.h
+    @brief GUI Button Control, with a flare
 
     Basic pushbutton control with an up/down state, and Mark3 visual style
 */
@@ -27,7 +27,6 @@ See license.txt for more information
 
 namespace Mark3
 {
-
 typedef void (*ButtonCallback)(void* pvData_);
 
 class SlickButtonControl : public GuiControl
@@ -36,7 +35,7 @@ public:
     virtual void        Init();
     virtual void        Draw();
     virtual GuiReturn_t ProcessEvent(GuiEvent_t* pstEvent_);
-    virtual void Activate(bool bActivate_);
+    virtual void        Activate(bool bActivate_);
 
     void SetFont(Font_t* pstFont_) { m_pstFont = pstFont_; }
     void SetCaption(const char* szCaption_) { m_szCaption = szCaption_; }
@@ -55,4 +54,4 @@ private:
     void*          m_pvCallbackData;
     ButtonCallback m_pfCallback;
 };
-} //namespace Mark3
+} // namespace Mark3

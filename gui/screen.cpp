@@ -11,16 +11,17 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file screen.cpp
-    \brief Higher level window management framework
+/**
+    @file screen.cpp
+    @brief Higher level window management framework
 */
 
 #include "kerneltypes.h"
 #include "screen.h"
 #include "gui.h"
 #include "memutil.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 void Screen::SetManager(ScreenManager* pclScreenManager_)
 {
@@ -51,6 +52,6 @@ Screen* ScreenManager::FindScreenByName(const char* szName_)
         pclTempNode = pclTempNode->GetNext();
     }
 
-    return NULL;
+    return nullptr;
 }
-} //namespace Mark3
+} // namespace Mark3

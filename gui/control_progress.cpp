@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_progress.cpp
-    \brief GUI Progress Bar Control
+/**
+    @file control_progress.cpp
+    @brief GUI Progress Bar Control
 
     A simple progress bar control using lines and rectangles to display
     the status of an operation from initialization to completion
@@ -23,7 +23,8 @@ See license.txt for more information
 #include "draw.h"
 #include "control_progress.h"
 #include "gui_palette.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 void ProgressControl::Init()
 {
@@ -98,8 +99,8 @@ void ProgressControl::SetProgress(uint8_t u8Progress_)
 }
 
 //---------------------------------------------------------------------------
-GuiReturn_t ProgressControl::ProcessEvent(GuiEvent_t*  /*pstEvent_*/)
+GuiReturn_t ProgressControl::ProcessEvent(GuiEvent_t* /*pstEvent_*/)
 {
     return GUI_EVENT_OK;
 }
-} //namespace Mark3
+} // namespace Mark3

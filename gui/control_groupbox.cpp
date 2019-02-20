@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_groupbox.cpp
-    \brief GUI GroupBox Control Implementation
+/**
+    @file control_groupbox.cpp
+    @brief GUI GroupBox Control Implementation
 */
 
 #include "gui.h"
@@ -22,7 +22,8 @@ See license.txt for more information
 #include "graphics.h"
 #include "control_groupbox.h"
 #include "gui_palette.h"
-namespace Mark3 {
+namespace Mark3
+{
 #define BORDER_OFFSET (2)
 #define TEXT_X_OFFSET (4)
 #define TEXT_Y_OFFSET (0)
@@ -83,4 +84,4 @@ void GroupBoxControl::Draw()
         pclDriver->Text(&stText);
     }
 }
-} //namespace Mark3
+} // namespace Mark3

@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file gui_palette.h
-    \brief Default colors used by the control set.
+/**
+    @file gui_palette.h
+    @brief Default colors used by the control set.
 */
 #pragma once
 

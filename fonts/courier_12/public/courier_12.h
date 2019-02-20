@@ -10,4 +10,3 @@ using namespace Mark3;
 //--[ Public Symbol Exports ]--
 extern const FONT_STORAGE_TYPE Courier_New_12_False_False_False_[];
 extern Font_t                  fntCourier_New_12_False_False_False_;
-

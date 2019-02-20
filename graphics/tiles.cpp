@@ -19,7 +19,8 @@ See license.txt for more information
 #include "colorspace.h"
 #include "graphics.h"
 #include "draw.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 void Tile_8x8::LoadTile(TileDef_t* pstTileDef_)
 {
@@ -30,8 +31,10 @@ void Tile_8x8::LoadTile(TileDef_t* pstTileDef_)
 
     // Tile size = ((width of the tile in pixels * bits-per-pixel encoded) / 8) rounded to the next byte * number of
     // rows.
-    auto u16TileSize = (static_cast<uint16_t>(pstTileDef_->m_u8Width) * (static_cast<uint16_t>(pstTileDef_->m_eFormat + 1)) + 7) >> 3;
-    COLOR*   puBufPtr    = m_auTileBuffer;
+    auto u16TileSize
+        = (static_cast<uint16_t>(pstTileDef_->m_u8Width) * (static_cast<uint16_t>(pstTileDef_->m_eFormat + 1)) + 7)
+          >> 3;
+    COLOR* puBufPtr = m_auTileBuffer;
 
     u16TileSize *= static_cast<uint16_t>(pstTileDef_->m_u8Height);
 
@@ -62,4 +65,4 @@ void Tile_8x8::Render(GraphicsDriver* pclDriver_, uint16_t u16X_, uint16_t u16Y_
     // use the supplied driver to render the tile as a bitmap
     pclDriver_->Bitmap(&stBitmap);
 }
-} //namespace Mark3
+} // namespace Mark3

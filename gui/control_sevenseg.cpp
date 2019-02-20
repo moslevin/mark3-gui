@@ -11,9 +11,9 @@
 Copyright (c) 2012 - 2018 m0slevin, all rights reserved.
 See license.txt for more information
 ===========================================================================*/
-/*!
-    \file control_sevenseg.cpp
-    \brief 7-segment display control
+/**
+    @file control_sevenseg.cpp
+    @brief 7-segment display control
 
     4-digit seven-segment display control.  used for clocks, stopwatches, etc.
 */
@@ -23,9 +23,9 @@ See license.txt for more information
 #include "draw.h"
 #include "font.h"
 #include "control_sevenseg.h"
-#include "kernelaware.h"
 #include "gui_palette.h"
-namespace Mark3 {
+namespace Mark3
+{
 //---------------------------------------------------------------------------
 /*
 
@@ -192,8 +192,8 @@ void SevenSegControl::Draw()
 }
 
 //---------------------------------------------------------------------------
-GuiReturn_t SevenSegControl::ProcessEvent(GuiEvent_t*  /*pstEvent_*/)
+GuiReturn_t SevenSegControl::ProcessEvent(GuiEvent_t* /*pstEvent_*/)
 {
     return GUI_EVENT_OK;
 }
-} //namespace Mark3
+} // namespace Mark3
