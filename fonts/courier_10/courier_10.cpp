@@ -1,5 +1,5 @@
 /*    m0slevin Font Renderer
-    (c) 2012 - 2018, m0slevin, all rights reserved.
+    (c) 2012 - 2019, m0slevin, all rights reserved.
 */
 
 #include "font.h"
